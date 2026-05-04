@@ -1,0 +1,909 @@
+/* ═══════════════════════════════════════════════════════════
+   styles/main.css
+   QuickWash Car Washing Service — Complete Stylesheet
+   Structure:
+     1.  CSS Variables (Design Tokens)
+     2.  Reset & Base
+     3.  Reusable Utilities
+     4.  Navbar
+     5.  Hero Section
+     6.  Section Wrapper
+     7.  Services Grid
+     8.  Pricing
+     9.  How It Works
+     10. Footer
+     11. Booking Modal
+     12. Toast Notification
+     13. Keyframe Animations
+     14. Media Queries (Mobile-First Responsive)
+═══════════════════════════════════════════════════════════ */
+
+
+/* ─────────────────────────────────────────
+   1. CSS VARIABLES — Design Tokens
+   Change one value here → updates everywhere
+───────────────────────────────────────── */
+:root {
+  --blue:       #0d6efd;
+  --blue-dark:  #0b5ed7;
+  --accent:     #38bdf8;
+  --dark:       #0a0f1e;
+  --card-bg:    #111827;
+  --muted:      #6b7280;
+  --white:      #f0f4ff;
+  --danger:     #f87171;
+  --success:    #4ade80;
+  --radius:     14px;
+  --radius-sm:  8px;
+  --transition: 0.3s ease;
+  --shadow:     0 20px 40px rgba(13, 110, 253, 0.2);
+}
+
+
+/* ─────────────────────────────────────────
+   2. RESET & BASE STYLES
+───────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;   /* smooth anchor scrolling */
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--dark);
+  color: var(--white);
+  overflow-x: hidden;        /* prevent horizontal scroll */
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+
+/* ─────────────────────────────────────────
+   3. REUSABLE UTILITIES
+───────────────────────────────────────── */
+
+/* --- Buttons --- */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.8rem;
+  border-radius: 50px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border: none;
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    background var(--transition);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  background: var(--blue);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--blue-dark);
+  box-shadow: 0 8px 24px rgba(13, 110, 253, 0.4);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid var(--accent);
+  color: var(--accent);
+}
+
+.btn-outline:hover {
+  background: var(--accent);
+  color: var(--dark);
+}
+
+/* Full-width button helper */
+.full-w {
+  width: 100%;
+  text-align: center;
+}
+
+
+/* ─────────────────────────────────────────
+   4. NAVBAR — Sticky Header
+───────────────────────────────────────── */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(10, 15, 30, 0.88);
+  backdrop-filter: blur(14px);                      /* frosted glass */
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+  color: var(--accent);
+}
+
+.logo span {
+  color: var(--white);
+}
+
+/* Nav links (horizontal on desktop) */
+nav ul {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+nav ul li a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--muted);
+  transition: color var(--transition);
+}
+
+nav ul li a:hover {
+  color: var(--white);
+}
+
+/* Hamburger toggle button — hidden on desktop */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 26px;
+  height: 2px;
+  background: var(--white);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+
+/* ─────────────────────────────────────────
+   5. HERO SECTION — Call to Action
+───────────────────────────────────────── */
+.hero {
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradient mesh background (decorative, no image needed) */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 40%, rgba(13, 110, 253, 0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 60% at 80% 60%, rgba(56, 189, 248, 0.12) 0%, transparent 70%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* All hero children sit above the ::before gradient */
+.hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Small pill tag above headline */
+.hero-tag {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  padding: 0.4rem 1.2rem;
+  border-radius: 50px;
+  margin-bottom: 1.5rem;
+  animation: fadeUp 0.6s ease both;
+}
+
+/* Main headline — responsive font size via clamp() */
+.hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3rem, 8vw, 7rem);
+  line-height: 1;
+  letter-spacing: 2px;
+  margin-bottom: 1.5rem;
+  animation: fadeUp 0.7s 0.1s ease both;   /* 0.1s delay = stagger */
+}
+
+.hero h1 .highlight {
+  color: var(--accent);
+}
+
+.hero p {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: var(--muted);
+  max-width: 540px;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+  animation: fadeUp 0.7s 0.2s ease both;
+}
+
+/* CTA button group */
+.hero-btns {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: fadeUp 0.7s 0.3s ease both;
+}
+
+/* Stats strip below CTAs */
+.hero-badge {
+  margin-top: 4rem;
+  display: flex;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: fadeUp 0.7s 0.4s ease both;
+}
+
+.badge-item {
+  text-align: center;
+}
+
+.badge-item .num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.2rem;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.badge-item p {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 0.25rem;
+}
+
+
+/* ─────────────────────────────────────────
+   6. SECTION WRAPPER — shared layout
+───────────────────────────────────────── */
+.section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.section-header h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  letter-spacing: 2px;
+  margin-bottom: 0.75rem;
+}
+
+.section-header p {
+  color: var(--muted);
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+
+/* ─────────────────────────────────────────
+   7. SERVICES SECTION — CSS Grid Cards
+───────────────────────────────────────── */
+#services {
+  background: #080c18;   /* slightly darker than body */
+}
+
+/* Responsive grid: auto-fit fills columns, min 260px each */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.service-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition:
+    transform var(--transition),
+    box-shadow var(--transition),
+    border-color var(--transition);
+}
+
+/* Hover: lift + glow */
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow);
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+/* Emoji icon placeholder (replaces real image) */
+.service-card .card-img {
+  height: 180px;
+  background: linear-gradient(135deg, #1a2540, #0d1a35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5rem;
+}
+
+.service-card .card-body {
+  padding: 1.5rem;
+}
+
+.service-card h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+}
+
+.service-card p {
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.service-card .price {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  color: var(--accent);
+}
+
+
+/* ─────────────────────────────────────────
+   8. PRICING SECTION
+───────────────────────────────────────── */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 1.5rem;
+}
+
+.pricing-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius);
+  padding: 2.5rem 2rem;
+  position: relative;
+  transition: transform var(--transition);
+}
+
+.pricing-card:hover {
+  transform: translateY(-4px);
+}
+
+/* Highlighted / featured card */
+.pricing-card.featured {
+  border-color: var(--blue);
+  background: linear-gradient(160deg, #0d1f3c, #0a0f1e);
+}
+
+/* "Most Popular" ribbon */
+.badge-popular {
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--blue);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  padding: 0.3rem 1rem;
+  border-radius: 50px;
+  white-space: nowrap;
+}
+
+.pricing-card h3 {
+  font-size: 1.1rem;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+
+.pricing-card .amount {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3.5rem;
+  line-height: 1;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+}
+
+.pricing-card .amount span {
+  font-size: 1.4rem;
+  vertical-align: top;
+  margin-top: 0.5rem;
+  display: inline-block;
+}
+
+.pricing-card ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.pricing-card ul li {
+  font-size: 0.88rem;
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pricing-card ul li i.fa-check { color: var(--accent); }
+.pricing-card ul li.muted      { color: var(--muted); }
+.pricing-card ul li.muted i    { color: var(--muted); }
+
+
+/* ─────────────────────────────────────────
+   9. HOW IT WORKS
+───────────────────────────────────────── */
+.how-section {
+  background: #080c18;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.step-card {
+  text-align: center;
+  padding: 2rem 1.5rem;
+}
+
+.step-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(13, 110, 253, 0.12);
+  border: 1px solid rgba(13, 110, 253, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin: 0 auto 1.2rem;
+}
+
+.step-card h3 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.step-card p {
+  color: var(--muted);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+
+/* ─────────────────────────────────────────
+   10. FOOTER — Contact + Social Links
+───────────────────────────────────────── */
+footer {
+  background: #060a14;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 3rem 2rem;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.footer-logo {
+  margin-bottom: 1rem;
+}
+
+.footer-info p {
+  color: var(--muted);
+  font-size: 0.88rem;
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-info p i {
+  color: var(--accent);
+  width: 16px;
+}
+
+/* Social icon circles */
+.social-links {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.social-links a {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+  transition:
+    border-color var(--transition),
+    color var(--transition),
+    background var(--transition);
+}
+
+.social-links a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(56, 189, 248, 0.08);
+}
+
+.footer-copy {
+  color: var(--muted);
+  font-size: 0.78rem;
+  text-align: center;
+  margin-top: 2rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* ─────────────────────────────────────────
+   11. BOOKING MODAL — Popup
+───────────────────────────────────────── */
+
+/* Dim overlay that covers the whole page */
+.modal-overlay {
+  display: none;                        /* hidden by default */
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+/* JS adds .open → switches display to flex */
+.modal-overlay.open {
+  display: flex;
+}
+
+/* The white/dark box in the center */
+.modal-box {
+  background: var(--card-bg);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 460px;
+  position: relative;
+  animation: popIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+/* ✕ close button top-right */
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1.2rem;
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 1.6rem;
+  cursor: pointer;
+  line-height: 1;
+  transition: color var(--transition);
+}
+
+.modal-close:hover {
+  color: var(--white);
+}
+
+.modal-box h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  letter-spacing: 1px;
+  margin-bottom: 1.5rem;
+}
+
+/* --- Form Fields --- */
+.form-group {
+  margin-bottom: 1.1rem;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-sm);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.92rem;
+  outline: none;
+  transition: border-color var(--transition);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--blue);
+}
+
+.form-group select option {
+  background: #1a2540;    /* dark dropdown options */
+}
+
+/* Error text (hidden by default) */
+.form-error {
+  font-size: 0.78rem;
+  color: var(--danger);
+  margin-top: 0.3rem;
+  display: none;            /* shown when .error class is added by JS */
+}
+
+/* When JS adds .error to .form-group */
+.form-group.error .form-error {
+  display: block;
+}
+
+.form-group.error input,
+.form-group.error select {
+  border-color: var(--danger);
+}
+
+/* Full-width submit button */
+.submit-btn {
+  width: 100%;
+  padding: 0.9rem;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+/* Success state inside modal */
+.success-msg {
+  display: none;           /* shown by JS after successful submit */
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.success-msg .check {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+}
+
+.success-msg h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.success-msg p {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+
+/* ─────────────────────────────────────────
+   12. TOAST NOTIFICATION
+───────────────────────────────────────── */
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--card-bg);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.5rem;
+  font-size: 0.88rem;
+  color: var(--white);
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  /* Start off-screen below */
+  transform: translateY(120px);
+  opacity: 0;
+  transition:
+    transform 0.4s ease,
+    opacity 0.4s ease;
+  pointer-events: none;   /* can't be clicked when hidden */
+}
+
+/* JS adds .show → slides up + fades in */
+.toast.show {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.toast i {
+  color: var(--success);
+  font-size: 1rem;
+}
+
+
+/* ─────────────────────────────────────────
+   13. KEYFRAME ANIMATIONS
+───────────────────────────────────────── */
+
+/* Slide up + fade in (hero + scroll observer) */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scale + fade in (modal entrance) */
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.86);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+/* ─────────────────────────────────────────
+   14. MEDIA QUERIES — Mobile-First Responsive
+   Base styles above = mobile.
+   These override for larger screens.
+───────────────────────────────────────── */
+
+/* ── Tablet / small desktop: max 768px ── */
+@media (max-width: 768px) {
+
+  /* Show hamburger icon */
+  .menu-toggle {
+    display: flex;
+  }
+
+  /* Hide nav links; JS will add .active to show them */
+  nav ul {
+    display: none;
+    position: absolute;
+    top: 100%;           /* just below the header */
+    left: 0;
+    right: 0;
+    background: var(--dark);
+    flex-direction: column;
+    padding: 1.5rem 2rem;
+    gap: 1.2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  /* JS toggles this class to reveal the menu */
+  nav ul.active {
+    display: flex;
+  }
+
+  /* Stack all grids to single column */
+  .service-grid,
+  .pricing-grid,
+  .steps-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Shrink hero a bit */
+  .hero {
+    min-height: auto;
+    padding: 6rem 1.5rem 4rem;
+  }
+
+  /* Stack hero buttons vertically */
+  .hero-btns {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Smaller stats */
+  .hero-badge {
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  /* Footer stacks */
+  .footer-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Modal full-width on mobile */
+  .modal-box {
+    padding: 2rem 1.5rem;
+  }
+
+  /* Toast smaller */
+  .toast {
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem;
+    font-size: 0.82rem;
+  }
+}
+
+/* ── Very small screens ── */
+@media (max-width: 400px) {
+  .hero h1 {
+    font-size: 2.6rem;
+  }
+}

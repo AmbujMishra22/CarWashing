@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>QuickWash — Professional Car Washing</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <!-- Our Stylesheet -->
+  <link rel="stylesheet" href="styles/main.css"/>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════
+       A. NAVBAR — Sticky Header
+  ══════════════════════════════════════════ -->
+  <header>
+    <nav>
+      <div class="logo">Quick<span>Wash</span> 🚗</div>
+
+      <!-- Hamburger (shown only on mobile via CSS) -->
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <ul id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#how">How It Works</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><button class="btn btn-primary btn-book" id="openModal">Book Now</button></li>
+      </ul>
+    </nav>
+  </header>
+
+
+  <!-- ══════════════════════════════════════════
+       B. HERO SECTION — Call to Action
+  ══════════════════════════════════════════ -->
+  <section id="home" class="hero">
+    <span class="hero-tag">⚡ Fast · Reliable · Eco-Friendly</span>
+
+    <h1>Your Car Deserves<br>A <span class="highlight">Perfect Wash</span></h1>
+
+    <p>Professional car washing in under 30 minutes. Expert hands, spotless results — every single time.</p>
+
+    <div class="hero-btns">
+      <button class="btn btn-primary btn-book">Schedule a Wash</button>
+      <a href="#services" class="btn btn-outline">View Services</a>
+    </div>
+
+    <div class="hero-badge">
+      <div class="badge-item">
+        <div class="num">5K+</div>
+        <p>Happy Customers</p>
+      </div>
+      <div class="badge-item">
+        <div class="num">30</div>
+        <p>Min Average</p>
+      </div>
+      <div class="badge-item">
+        <div class="num">4.9★</div>
+        <p>Avg Rating</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       C. SERVICES SECTION — CSS Grid Cards
+  ══════════════════════════════════════════ -->
+  <section id="services">
+    <div class="section">
+      <div class="section-header">
+        <h2>Our Services</h2>
+        <p>From a quick exterior rinse to full deep-clean detailing — a package for every car and budget.</p>
+      </div>
+
+      <div class="service-grid">
+
+        <div class="service-card">
+          <div class="card-img">💧</div>
+          <div class="card-body">
+            <h3>Basic Wash</h3>
+            <p>Exterior rinse, foam wash, and tire shine. Perfect for a quick refresh.</p>
+            <div class="price">$15</div>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="card-img">✨</div>
+          <div class="card-body">
+            <h3>Premium Wash</h3>
+            <p>Full exterior + interior vacuum, dashboard wipe, and glass cleaning.</p>
+            <div class="price">$30</div>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="card-img">🔥</div>
+          <div class="card-body">
+            <h3>Deep Detailing</h3>
+            <p>Complete inside-out detailing including polish, wax, and leather conditioning.</p>
+            <div class="price">$75</div>
+          </div>
+        </div>
+
+        <div class="service-card">
+          <div class="card-img">🛡️</div>
+          <div class="card-body">
+            <h3>Ceramic Coat</h3>
+            <p>Long-lasting ceramic coating for maximum protection against dirt and UV rays.</p>
+            <div class="price">$150</div>
+          </div>
+        </div>
+
+      </div><!-- /.service-grid -->
+    </div><!-- /.section -->
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       PRICING SECTION
+  ══════════════════════════════════════════ -->
+  <section id="pricing">
+    <div class="section">
+      <div class="section-header">
+        <h2>Simple Pricing</h2>
+        <p>No hidden fees. Pick what fits your needs.</p>
+      </div>
+
+      <div class="pricing-grid">
+
+        <div class="pricing-card">
+          <h3>Basic</h3>
+          <div class="amount"><span>$</span>15</div>
+          <ul>
+            <li><i class="fas fa-check"></i> Exterior Foam Wash</li>
+            <li><i class="fas fa-check"></i> Tire Shine</li>
+            <li><i class="fas fa-check"></i> Window Clean</li>
+            <li class="muted"><i class="fas fa-times"></i> Interior Cleaning</li>
+            <li class="muted"><i class="fas fa-times"></i> Wax &amp; Polish</li>
+          </ul>
+          <button class="btn btn-outline btn-book full-w">Get Started</button>
+        </div>
+
+        <div class="pricing-card featured">
+          <span class="badge-popular">MOST POPULAR</span>
+          <h3>Premium</h3>
+          <div class="amount"><span>$</span>30</div>
+          <ul>
+            <li><i class="fas fa-check"></i> Exterior Foam Wash</li>
+            <li><i class="fas fa-check"></i> Interior Vacuum</li>
+            <li><i class="fas fa-check"></i> Dashboard Wipe</li>
+            <li><i class="fas fa-check"></i> Glass Cleaning</li>
+            <li class="muted"><i class="fas fa-times"></i> Wax &amp; Polish</li>
+          </ul>
+          <button class="btn btn-primary btn-book full-w">Get Started</button>
+        </div>
+
+        <div class="pricing-card">
+          <h3>Detailing</h3>
+          <div class="amount"><span>$</span>75</div>
+          <ul>
+            <li><i class="fas fa-check"></i> Full Deep Clean</li>
+            <li><i class="fas fa-check"></i> Wax &amp; Polish</li>
+            <li><i class="fas fa-check"></i> Leather Conditioning</li>
+            <li><i class="fas fa-check"></i> Engine Bay Clean</li>
+            <li><i class="fas fa-check"></i> Odor Removal</li>
+          </ul>
+          <button class="btn btn-outline btn-book full-w">Get Started</button>
+        </div>
+
+      </div><!-- /.pricing-grid -->
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       HOW IT WORKS
+  ══════════════════════════════════════════ -->
+  <section id="how" class="how-section">
+    <div class="section">
+      <div class="section-header">
+        <h2>How It Works</h2>
+        <p>Clean car in 3 simple steps.</p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-icon">📅</div>
+          <h3>1. Book Online</h3>
+          <p>Choose your service and pick a time that works for you through our booking form.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-icon">🚗</div>
+          <h3>2. Drop Your Car</h3>
+          <p>Bring your car to us or use our free pick-up service available in your area.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-icon">✅</div>
+          <h3>3. Pick It Up</h3>
+          <p>We notify you when your spotless car is ready. Pay on collection — no surprises.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════
+       E. FOOTER — Contact Info + Social Links
+  ══════════════════════════════════════════ -->
+  <footer id="contact">
+    <div class="footer-content">
+      <div class="footer-info">
+        <div class="logo footer-logo">Quick<span>Wash</span> 🚗</div>
+        <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+        <p><i class="fas fa-location-dot"></i> 123 Car Wash St, Your City</p>
+        <p><i class="fas fa-envelope"></i> hello@quickwash.com</p>
+      </div>
+
+      <div class="social-links">
+        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <p class="footer-copy">© 2025 QuickWash. All rights reserved.</p>
+  </footer>
+
+
+  <!-- ══════════════════════════════════════════
+       D. BOOKING MODAL — Popup Form
+  ══════════════════════════════════════════ -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal-box" id="modalBox">
+
+      <button class="modal-close" id="closeModal">&times;</button>
+      <h2>Book Your Wash 🚿</h2>
+
+      <!-- The booking form (hidden after successful submit) -->
+      <div id="bookingForm">
+        <div class="form-group" id="fg-name">
+          <label>Full Name</label>
+          <input type="text" id="inputName" placeholder="John Doe"/>
+          <span class="form-error">Please enter your name.</span>
+        </div>
+
+        <div class="form-group" id="fg-email">
+          <label>Email Address</label>
+          <input type="email" id="inputEmail" placeholder="john@example.com"/>
+          <span class="form-error">Please enter a valid email.</span>
+        </div>
+
+        <div class="form-group" id="fg-phone">
+          <label>Phone Number</label>
+          <input type="tel" id="inputPhone" placeholder="+91 98765 43210"/>
+          <span class="form-error">Please enter your phone number.</span>
+        </div>
+
+        <div class="form-group">
+          <label>Select Service</label>
+          <select id="inputService">
+            <option value="">— Choose a service —</option>
+            <option value="basic">Basic Wash ($15)</option>
+            <option value="premium">Premium Wash ($30)</option>
+            <option value="detailing">Deep Detailing ($75)</option>
+            <option value="ceramic">Ceramic Coat ($150)</option>
+          </select>
+        </div>
+
+        <button class="btn btn-primary submit-btn" id="submitBooking">Confirm Booking</button>
+      </div><!-- /#bookingForm -->
+
+      <!-- Success message (shown after submit) -->
+      <div class="success-msg" id="successMsg">
+        <div class="check">✅</div>
+        <h3>Booking Confirmed!</h3>
+        <p>Thanks! We'll send a confirmation to your email shortly.</p>
+      </div>
+
+    </div><!-- /.modal-box -->
+  </div><!-- /.modal-overlay -->
+
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">
+    <i class="fas fa-check-circle"></i>
+    <span id="toastText">Booking submitted successfully!</span>
+  </div>
+
+
+  <!-- Our JavaScript (loaded at end of body so HTML is ready) -->
+  <script src="scripts/app.js"></script>
+
+</body>
+</html>
